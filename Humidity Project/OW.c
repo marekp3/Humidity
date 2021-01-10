@@ -1,6 +1,8 @@
 #include "OW.h"
 #include <util\atomic.h>
 #include <util/delay.h>
+#include <avr/io.h>
+#include <stdint.h>
 
 
 void OW_init()
@@ -24,12 +26,13 @@ uint16_t OW_Read2Byte()
 	
 }
 
-uint16_t OW_Read4Bits()
+uint16_t OW_Read8Bits()
 
 {
 	
-		int check,i = 0;
-		for(i=0;i<3;i++)
+		uint16_t check = 0;
+		int i = 0;
+		for(i=0;i<8;i++)
 		{
 			check<<=1;
 			if(OW_ReadBit()) check|=0x01;
