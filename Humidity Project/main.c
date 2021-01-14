@@ -22,12 +22,15 @@ volatile uint16_t temp = 0;
 volatile uint16_t temp_dz = 0;
 volatile uint16_t temp_jed = 0;
 
+volatile uint16_t temp_prec = 0;
+volatile uint16_t crc = 0;
+
 int main(void)
 {
-	uint8_t check = 0;
+	uint16_t check = 0;
 	bool OW_READ = false;
-	
-	DDRD = 0xFF;
+
+>>>>>>> checksum
 	DDRD = 0xFF;
 	DDRC |= 0xFF;
 	PORTC |=0x0F;
@@ -38,7 +41,8 @@ int main(void)
 	TCNT0 = timer_start;
 	sei();
 	
-	
+
+>>>>>>> checksum
 
     while (1) 
     {
@@ -51,13 +55,30 @@ int main(void)
 			{
 	
 				hum_wart = OW_Read2Byte();
+
+				crc = (hum_wart & ~(~0<<8)) + ((hum_wart & (~(~0<<8))<<8)>>8);
+>>>>>>> checksum
 				hum_dz=hum_wart/100;
 				hum_jed=(hum_wart-(hum_dz*100))/10;
 				hum_prec = (hum_wart-(hum_dz*100) - (hum_jed*10));
 				temp = OW_Read2Byte();
+
+				crc = crc + (temp & ~(~0<<8)) + ((temp & (~(~0<<8))<<8)>>8);
 				temp_dz=temp/100;
 				temp_jed=(temp-(temp_dz)*100)/10;
-				check = OW_Read4Bits();
+				temp_prec = (temp-(temp_dz*100) - (temp_jed*10));
+				check = OW_Read8Bits();
+				crc = crc & ~(~0<<8);
+				if(crc == check)
+				{
+					
+				}
+				else if (crc !=check)
+				{
+					temp_jed = temp_dz = temp_prec = 2;
+					
+				}
+>>>>>>> checksum
 				second_count = false;
 							
 
@@ -90,11 +111,14 @@ ISR(TIMER0_OVF_vect)
 		PORTC&=0xF0; //Trun Off All Displays
 		LEDNO=(LEDNO+1)%LEDDISPNO; //Modulo daje nam 0,1,2,3
 		if(LEDNO==3) PORTD = 0x00; //DIGITS[hum_dz];
-		else if(LEDNO==2) PORTD = DIGITS[hum_prec];
-		else if(LEDNO==1) PORTD = (DIGITS[hum_jed] | DOT);
-		else if(LEDNO==0) PORTD = DIGITS[hum_dz];
+
+		else if(LEDNO==2) PORTD = DIGITS[temp_prec];
+		else if(LEDNO==1) PORTD = (DIGITS[temp_jed] | DOT);
+		else if(LEDNO==0) PORTD = DIGITS[temp_dz];
 		PORTC = PORTC | (1<<LEDNO);
 		ktory=0;
+		
+>>>>>>> checksum
 	}
 	
 	TCNT0 = timer_start;

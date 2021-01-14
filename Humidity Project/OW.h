@@ -1,4 +1,8 @@
 #include <stdbool.h>
+<<<<<<< HEAD
+=======
+#include <stdint.h>
+>>>>>>> checksum
 
 #define OW_PIN C, 4
 #define GLUE(a, b) a##b
@@ -14,3 +18,7 @@ void OW_init();
 void OW_ResetPulse();
 bool OW_WaitForPresencePulse();
 bool OW_ReadBit();
+<<<<<<< HEAD
+=======
+uint16_t OW_Read8Bits();
+>>>>>>> checksum

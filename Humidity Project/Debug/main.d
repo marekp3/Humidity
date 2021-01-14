@@ -1,12 +1,20 @@
 main.d main.o: .././main.c .././OW.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
+<<<<<<< HEAD
+=======
+ d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
+ d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+>>>>>>> checksum
  .././OW.c \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\atomic.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
+<<<<<<< HEAD
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+=======
+>>>>>>> checksum
  D:\Other\AVR\ Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include/avr/iom8a.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
  d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
@@ -22,6 +30,13 @@ main.d main.o: .././main.c .././OW.h \
 
 d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
+<<<<<<< HEAD
+=======
+d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+
+d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
+
+>>>>>>> checksum
 .././OW.c:
 
 d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\atomic.h:
@@ -32,10 +47,13 @@ d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_d
 
 d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h:
 
+<<<<<<< HEAD
 d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
 
 d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
+=======
+>>>>>>> checksum
 D:\Other\AVR\ Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include/avr/iom8a.h:
 
 d:\other\avr\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h:
