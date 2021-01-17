@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name 4X7SEG)(type Legacy)(uri ${KIPRJMOD}/4X7SEG.lib)(options "")(descr ""))
+  (lib (name TH7SEG-rescue)(type Legacy)(uri ${KIPRJMOD}/TH7SEG-rescue.lib)(options "")(descr ""))
+)
