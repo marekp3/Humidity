@@ -1,12 +1,26 @@
 # RTC with humidity and temperature reading
 
-as in title project to show ime on 7SEGments display. In adition every couple of seconds humidity and temperature is displayed.
+The goal of this project is to create device which will have 3 main functions:
+- RTC
+- Humidity read
+- Temperature read
 
-## Tools
+## Table of content
 
-C language
-PCB in KiCAD
+* [General Info](#general-info)
+* [Software](*software)
+* [Hardware/PCB](*hardware/pcb)
+* [Next Steps](*next-steps)
 
-### Next steps
+## General Info
+
+## Software
+
+## Hardware/PCB
+![PCB board](https://github.com/marekp3/Humidity/blob/main/Graphics/PCB.JPG?raw=true)
+![Schematic](https://github.com/marekp3/Humidity/blob/main/Graphics/Schematic.JPG?raw=true)
+
+
+## Next Steps
 
 
