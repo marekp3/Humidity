@@ -1,10 +1,3 @@
-/*
- * Humidity Project.c
- *
- * Created: 18.12.2020 21:49:12
- * Author : EBOHOC
- */ 
-
 #define F_CPU 8000000UL
 #include "OW.h"
 #include "OW.c"
@@ -25,12 +18,12 @@ volatile uint16_t temp_jed = 0;
 volatile uint16_t temp_prec = 0;
 volatile uint16_t crc = 0;
 
-int main(void)
+int main()
 {
 	uint16_t check = 0;
 	bool OW_READ = false;
 
->>>>>>> checksum
+
 	DDRD = 0xFF;
 	DDRC |= 0xFF;
 	PORTC |=0x0F;
@@ -41,48 +34,51 @@ int main(void)
 	TCNT0 = timer_start;
 	sei();
 	
+	_delay_ms(4000);
 
->>>>>>> checksum
 
     while (1) 
     {
 		if(second_count==true)
 		{
 			
+				
 			
-			OW_READ=OW_WaitForPresencePulse();
-			if(OW_READ)
-			{
-	
-				hum_wart = OW_Read2Byte();
-
-				crc = (hum_wart & ~(~0<<8)) + ((hum_wart & (~(~0<<8))<<8)>>8);
->>>>>>> checksum
-				hum_dz=hum_wart/100;
-				hum_jed=(hum_wart-(hum_dz*100))/10;
-				hum_prec = (hum_wart-(hum_dz*100) - (hum_jed*10));
-				temp = OW_Read2Byte();
-
-				crc = crc + (temp & ~(~0<<8)) + ((temp & (~(~0<<8))<<8)>>8);
-				temp_dz=temp/100;
-				temp_jed=(temp-(temp_dz)*100)/10;
-				temp_prec = (temp-(temp_dz*100) - (temp_jed*10));
-				check = OW_Read8Bits();
-				crc = crc & ~(~0<<8);
-				if(crc == check)
-				{
-					
-				}
-				else if (crc !=check)
-				{
-					temp_jed = temp_dz = temp_prec = 2;
-					
-				}
->>>>>>> checksum
 				second_count = false;
-							
+			
+				OW_READ=OW_WaitForPresencePulse();
+			
+				if(OW_READ)
+				{
+	
+					hum_wart = OW_Read2Byte();
 
+					crc = (hum_wart & ~(~0<<8)) + ((hum_wart & (~(~0<<8))<<8)>>8);
+
+					hum_dz=hum_wart/100;
+					hum_jed=(hum_wart-(hum_dz*100))/10;
+					hum_prec = (hum_wart-(hum_dz*100) - (hum_jed*10));
+					temp = OW_Read2Byte();
+
+					crc = crc + (temp & ~(~0<<8)) + ((temp & (~(~0<<8))<<8)>>8);
+					temp_dz=temp/100;
+					temp_jed=(temp-(temp_dz)*100)/10;
+					temp_prec = (temp-(temp_dz*100) - (temp_jed*10));
+					check = OW_Read8Bits();
+					crc = crc & ~(~0<<8);
+					if(crc == check)
+					{
+					
+					}
+					else if (crc !=check)
+					{
+						temp_jed = temp_dz = temp_prec = 2;
+					
+					}
+				
+							
 			}
+			
 			//else PORTD = 0x00;
 		}
 
@@ -118,7 +114,7 @@ ISR(TIMER0_OVF_vect)
 		PORTC = PORTC | (1<<LEDNO);
 		ktory=0;
 		
->>>>>>> checksum
+
 	}
 	
 	TCNT0 = timer_start;

@@ -1,11 +1,9 @@
 #include "OW.h"
 #include <util\atomic.h>
 #include <util/delay.h>
-<<<<<<< HEAD
-=======
 #include <avr/io.h>
 #include <stdint.h>
->>>>>>> checksum
+#include <util\atomic.h>
 
 
 void OW_init()
@@ -29,14 +27,8 @@ uint16_t OW_Read2Byte()
 	
 }
 
-<<<<<<< HEAD
-uint16_t OW_Read4Bits()
 
-{
-	
-		int check,i = 0;
-		for(i=0;i<3;i++)
-=======
+
 uint16_t OW_Read8Bits()
 
 {
@@ -44,7 +36,7 @@ uint16_t OW_Read8Bits()
 		uint16_t check = 0;
 		int i = 0;
 		for(i=0;i<8;i++)
->>>>>>> checksum
+
 		{
 			check<<=1;
 			if(OW_ReadBit()) check|=0x01;
@@ -57,7 +49,6 @@ uint16_t OW_Read8Bits()
 
 void OW_ResetPulse()
 {
-	
 		
 		SET(DDR, OW_PIN);
 		_delay_us(1000);
@@ -70,43 +61,44 @@ unsigned char counter = 0;
 bool OW_WaitForPresencePulse()
 {
 	
-	OW_ResetPulse();
-			
-		while((counter<0xFF) && (GET(OW_PIN)!=0))
-		{
-			_delay_us(1);
-			counter++;
-		}
 		
-		if(counter==0xFF)
-		{
-			return false;
-		}
+		OW_ResetPulse();
+			counter=0;
+			while((counter<0xFF) && (GET(OW_PIN)!=0))
+			{
+				_delay_us(1);
+				counter++;
+			}
 		
-		counter=0;
+			if(counter==0xFF)
+			{
+				return false;
+			}
 		
-		while((counter<0xFF) && (GET(OW_PIN)==0))
-		{
-			_delay_us(1);
-			counter++;
-		}
+			counter=0;
+		
+			while((counter<0xFF) && (GET(OW_PIN)==0))
+			{
+				_delay_us(1);
+				counter++;
+			}
 		
 		
-		if(counter==0xFF)
-		{
-			return false;
-		}
-		counter=0;
-		while((counter<0xFF) && (GET(OW_PIN)!=0))
-		{
-			_delay_us(1);
-			counter++;
-		}
-		while(counter==0xFF)
-		{
-			return false;
-		}
-		
+			if(counter==0xFF)
+			{
+				return false;
+			}
+			counter=0;
+			while((counter<0xFF) && (GET(OW_PIN)!=0))
+			{
+				_delay_us(1);
+				counter++;
+			}
+			while(counter==0xFF)
+			{
+				return false;
+			}
+	
 	
 
 	return true;
