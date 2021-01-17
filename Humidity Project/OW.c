@@ -17,7 +17,8 @@ void OW_init()
 uint16_t OW_Read2Byte()
 {
 	
-		int hum,i = 0;
+		int hum = 0;
+		int i = 0;
 		for(i=0;i<16;i++)
 		{
 			hum<<=1;
